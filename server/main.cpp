@@ -6,9 +6,10 @@ using namespace std;
 
 int main()
 {
-  cout << "done\n";
-
   TCPEchoServer echoServer("127.0.0.1", 5000);
+
+  cout << "TCP echo server running at port 5000\n";
+
   char k;
   while (true)
   {
