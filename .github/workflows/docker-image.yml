@@ -14,5 +14,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set build tag
+      id: set_build_tag
+      run: echo "::set-output name=tag::$(date +%s)"
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag tcp_echo_server:$(date +%s)
+      run: docker build . --file Dockerfile --tag tcp_echo_server:${{ steps.set_build_tag.outputs.tag }}
+    - name: Copy generated artifacts
+      run: id=$(docker create tcp_echo_server:${{ steps.set_build_tag.outputs.tag }}) && docker cp $id:/app/build/echo_server . && docker cp $id:/app/build/client_example .
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: binaries
+        path: |
+          echo_server
+          client_example
