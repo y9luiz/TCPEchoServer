@@ -67,8 +67,14 @@ int main(int argc, char *argv[])
 
     LoginResponseMessage loginResponseMessage(vec);
 
-    std::cout << "Login sStatus: "
-              << ((static_cast<int>(loginResponseMessage.responseCode()) == 1) ? "OK" : "Failed") << "\n";
+    const auto loginStatus = loginResponseMessage.responseCode();
+    if (loginStatus != LoginResponseMessage::ResponseCode::OK)
+    {
+        std::cout << "Login failed\n";
+        return 1;
+    }
+
+    std::cout << "Login succeed\n";
 
     auto cypherMessage = createCypherMessage(originalMessage, username, password, sequence);
 
