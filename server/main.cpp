@@ -4,11 +4,39 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
   cout << "done\n";
 
   TCPEchoServer echoServer("127.0.0.1", 5000);
+  char k;
+  while (true)
+  {
+    cout << "\tPress q, to quit\n";
+    cout << "\tPress a, to add user\n";
 
-  this_thread::sleep_for(std::chrono::seconds(30));
+    cin >> k;
+
+    if (k == 'q')
+    {
+      echoServer.stop();
+      break;
+    }
+
+    if (k == 'a')
+    {
+      string username;
+      string password;
+
+      cout << "insert username: ";
+      cin >> username;
+
+      cout << "insert password: ";
+      cin >> password;
+
+      echoServer.addUser(username, password);
+    }
+  }
+
   return 0;
 }

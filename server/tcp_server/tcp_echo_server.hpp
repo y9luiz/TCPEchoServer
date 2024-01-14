@@ -6,7 +6,8 @@
 #include <string_view>
 #include <vector>
 
-class TCPEchoServer {
+class TCPEchoServer
+{
 public:
   class Impl;
 
@@ -16,6 +17,13 @@ public:
   TCPEchoServer(std::string_view address, int port);
 
   virtual ~TCPEchoServer();
+
+  /// @brief Add given user to a in memory internal database.
+  /// @param username, username to be added.
+  /// @param password, password for the given user.
+  void addUser(const std::string &username, const std::string &password);
+
+  void stop();
 
 private:
   void startAcceptConnections();

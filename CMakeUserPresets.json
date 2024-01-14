@@ -4,6 +4,6 @@
         "conan": {}
     },
     "include": [
-        "C:\\Users\\luiz_correia\\Projects\\tcp_echo_server\\build\\CMakePresets.json"
+        "/home/luiz/tmp/TCPEchoServer/build/CMakePresets.json"
     ]
 }
