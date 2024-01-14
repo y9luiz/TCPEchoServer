@@ -3,10 +3,8 @@
 
 #include <boost/asio.hpp>
 
-#include <functional>
 #include <iostream>
 #include <memory>
-#include <array>
 #include <thread>
 
 using namespace std;
