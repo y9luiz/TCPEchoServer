@@ -129,9 +129,6 @@ Build a image using the dockerfile
 
 Now it's just plug an play.
 
-For running the server:
+For run the server:
 
 > docker run -p 5000:500 tcp_echo_server tcp_echo_server echo_server
-
-And run the client:
-> docker run -p 5000:5000 tcp_echo_server client_example
