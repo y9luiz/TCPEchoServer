@@ -1,9 +1,0 @@
-{
-    "version": 4,
-    "vendor": {
-        "conan": {}
-    },
-    "include": [
-        "/home/luiz/tmp/TCPEchoServer/build/CMakePresets.json"
-    ]
-}
